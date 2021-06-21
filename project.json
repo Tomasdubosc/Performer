@@ -3,7 +3,7 @@
   "description": "Proceso que tiene como objetivo la lectura de notificaciones AFIP y consolida resultados para el usuario final- Robotic Enterprise Framework",
   "main": "Main.xaml",
   "dependencies": {
-    "AFIPLibrary": "[1.0.4]",
+    "AFIPLibrary": "[1.0.5]",
     "UiPath.Excel.Activities": "[2.10.4]",
     "UiPath.GSuite.Activities": "[1.11.0]",
     "UiPath.System.Activities": "[21.4.1]",
