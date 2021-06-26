@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1794.4,3990.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1794.4,5487.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="51">
@@ -107,11 +107,11 @@
       <AssemblyReference>Google.Apis.Drive.v3</AssemblyReference>
       <AssemblyReference>Google.Apis</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>Microsoft.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="735.2,3925.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1184.8,5422.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ss:SecureString" Name="afip_password" />
       <Variable x:TypeArguments="x:String" Name="afip_username" />
@@ -127,25 +127,25 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="693.6,3756.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+    <Sequence sap:VirtualizedContainerService.HintSize="1143.2,5253.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File - Kill All Processes" sap:VirtualizedContainerService.HintSize="652,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Framework\KillAllProcesses.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File - Kill All Processes" sap:VirtualizedContainerService.HintSize="1101.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Framework\KillAllProcesses.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <scg:Dictionary x:TypeArguments="x:String, Argument" />
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <If Condition="[in_isBlacklisted]" sap:VirtualizedContainerService.HintSize="652,239.2" sap2010:WorkflowViewState.IdRef="If_4">
+      <If Condition="[in_isBlacklisted]" sap:VirtualizedContainerService.HintSize="1101.6,239.2" sap2010:WorkflowViewState.IdRef="If_4">
         <If.Then>
           <Throw DisplayName="Throw - Blacklist Business Exception" Exception="[New BusinessRuleException(&quot;El CUIT: &quot;+in_Cuit+&quot; se etiquetó en Gmail como: &quot;+in_Config(&quot;blacklistFolder&quot;).ToString+&quot;. No se analizará&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
         </If.Then>
       </If>
-      <ui:BuildDataTable DataTable="[out_CuitNotificationsTable]" DisplayName="Build - CUIT Notification's Data Table" sap:VirtualizedContainerService.HintSize="652,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;CUIT&quot; msdata:Caption=&quot;&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;NOMBRE_x0020_CUIT&quot; msdata:Caption=&quot;&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;200&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;TIPO_x0020_CUIT&quot; msdata:Caption=&quot;&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;FECHA_x0020_PUBLICACION&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;20&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;TIENE_x0020_ADJUNTO&quot; msdata:Caption=&quot;&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;20&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;LINK&quot; msdata:Caption=&quot;&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;300&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;ESTADO&quot; msdata:Caption=&quot;&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;50&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;MENSAJE&quot; msdata:Caption=&quot;&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;2000&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;CRITICIDAD&quot; msdata:Caption=&quot;&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;20&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
-      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="652,312" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <ui:BuildDataTable DataTable="[out_CuitNotificationsTable]" DisplayName="Build - CUIT Notification's Data Table" sap:VirtualizedContainerService.HintSize="1101.6,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;CUIT&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;NOMBRE_x0020_CUIT&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;200&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;TIPO_x0020_CUIT&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;FECHA_x0020_PUBLICACION&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;20&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;TIENE_x0020_ADJUNTO&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;20&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;LINK&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;300&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;ESTADO&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;50&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;MENSAJE&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;2000&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;CRITICIDAD&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;20&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1101.6,312" sap2010:WorkflowViewState.IdRef="TryCatch_1">
         <TryCatch.Try>
           <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Cuit]" DisplayName="Get CUIT Credential" sap:VirtualizedContainerService.HintSize="283.2,80.8" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[afip_password]" Username="[afip_username]" />
         </TryCatch.Try>
@@ -166,10 +166,10 @@
           </Catch>
         </TryCatch.Catches>
       </TryCatch>
-      <a:Launch DisplayName="AFIP-Launch" sap:VirtualizedContainerService.HintSize="652,22.4" sap2010:WorkflowViewState.IdRef="Launch_1" in_afipURL="[in_Config(&quot;afipURL&quot;).ToString]" />
-      <a:Login DisplayName="AFIP-Login" sap:VirtualizedContainerService.HintSize="652,22.4" sap2010:WorkflowViewState.IdRef="Login_1" in_password="[afip_password]" in_username="[afip_username]" />
-      <a:GoToDomicilioFiscalElectronico DisplayName="AFIP-GoToDomicilioFiscalElectronico" sap:VirtualizedContainerService.HintSize="652,22.4" sap2010:WorkflowViewState.IdRef="GoToDomicilioFiscalElectronico_1" />
-      <If Condition="[in_Cuit.StartsWith(&quot;2&quot;)]" DisplayName="If - Persona Física" sap:VirtualizedContainerService.HintSize="652,374.4" sap2010:WorkflowViewState.IdRef="If_1">
+      <a:Launch DisplayName="AFIP-Launch" sap:VirtualizedContainerService.HintSize="1101.6,22.4" sap2010:WorkflowViewState.IdRef="Launch_1" in_afipURL="[in_Config(&quot;afipURL&quot;).ToString]" />
+      <a:Login DisplayName="AFIP-Login" sap:VirtualizedContainerService.HintSize="1101.6,22.4" sap2010:WorkflowViewState.IdRef="Login_1" in_password="[afip_password]" in_username="[afip_username]" />
+      <a:GoToDomicilioFiscalElectronico DisplayName="AFIP-GoToDomicilioFiscalElectronico" sap:VirtualizedContainerService.HintSize="1101.6,22.4" sap2010:WorkflowViewState.IdRef="GoToDomicilioFiscalElectronico_1" />
+      <If Condition="[in_Cuit.StartsWith(&quot;2&quot;)]" DisplayName="If - Persona Física" sap:VirtualizedContainerService.HintSize="1101.6,374.4" sap2010:WorkflowViewState.IdRef="If_1">
         <If.Then>
           <Sequence sap:VirtualizedContainerService.HintSize="304,215.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
             <sap:WorkflowViewStateService.ViewState>
@@ -207,9 +207,9 @@
           </Sequence>
         </If.Else>
       </If>
-      <a:ApplyFilters DisplayName="AFIP-ApplyFilters" sap:VirtualizedContainerService.HintSize="652,22.4" sap2010:WorkflowViewState.IdRef="ApplyFilters_2" in_endDate="[in_NotificationDate]" in_startDate="[in_NotificationDate]" />
-      <a:CountNotifications DisplayName="AFIP-CountNotifications" sap:VirtualizedContainerService.HintSize="652,22.4" sap2010:WorkflowViewState.IdRef="CountNotifications_2" out_notifications="[totalNotifications]" />
-      <Assign DisplayName="Assign - Current Notification = 1" sap:VirtualizedContainerService.HintSize="652,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <a:ApplyFilters DisplayName="AFIP-ApplyFilters" sap:VirtualizedContainerService.HintSize="1101.6,22.4" sap2010:WorkflowViewState.IdRef="ApplyFilters_2" in_endDate="[in_NotificationDate]" in_startDate="[in_NotificationDate]" />
+      <a:CountNotifications DisplayName="AFIP-CountNotifications" sap:VirtualizedContainerService.HintSize="1101.6,22.4" sap2010:WorkflowViewState.IdRef="CountNotifications_2" out_notifications="[totalNotifications]" />
+      <Assign DisplayName="Assign - Current Notification = 1" sap:VirtualizedContainerService.HintSize="1101.6,60" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="x:Int32">[currentNotification]</OutArgument>
         </Assign.To>
@@ -217,9 +217,9 @@
           <InArgument x:TypeArguments="x:Int32">1</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:InterruptibleWhile DisplayName="While - Pending Notifications" sap:VirtualizedContainerService.HintSize="652,1305.6" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+      <ui:InterruptibleWhile DisplayName="While - Pending Notifications" sap:VirtualizedContainerService.HintSize="1101.6,2943.2" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
         <ui:InterruptibleWhile.Body>
-          <Sequence DisplayName="Body - Pending Notifications" sap:VirtualizedContainerService.HintSize="524.8,1138.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body - Pending Notifications" sap:VirtualizedContainerService.HintSize="1066.4,2776" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="validCuit" />
               <Variable x:TypeArguments="x:String" Name="cuitFolderLink" />
@@ -230,7 +230,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[currentNotification&lt;&gt;1]" DisplayName="If - is not First iteration: apply filters" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="If_6">
+            <If Condition="[currentNotification&lt;&gt;1]" DisplayName="If - is not First iteration: apply filters" sap:VirtualizedContainerService.HintSize="1024.8,52.8" sap2010:WorkflowViewState.IdRef="If_6">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -249,9 +249,9 @@
                 </Sequence>
               </If.Then>
             </If>
-            <a:OpenNotification sap:VirtualizedContainerService.HintSize="483.2,22.4" sap2010:WorkflowViewState.IdRef="OpenNotification_1" in_notificationIndex="[currentNotification]" />
-            <a:ValidateCuitNotification sap:VirtualizedContainerService.HintSize="483.2,22.4" sap2010:WorkflowViewState.IdRef="ValidateCuitNotification_1" in_regexCuit="[in_Config(&quot;regexCuit&quot;).ToString]" in_searchedCUIT="[in_Cuit]" out_validCuit="[validCuit]" />
-            <If Condition="[validCuit=True]" DisplayName="If - Is Valid CUIT" sap:VirtualizedContainerService.HintSize="483.2,728" sap2010:WorkflowViewState.IdRef="If_2">
+            <a:OpenNotification sap:VirtualizedContainerService.HintSize="1024.8,22.4" sap2010:WorkflowViewState.IdRef="OpenNotification_1" in_notificationIndex="[currentNotification]" />
+            <a:ValidateCuitNotification sap:VirtualizedContainerService.HintSize="1024.8,22.4" sap2010:WorkflowViewState.IdRef="ValidateCuitNotification_1" in_regexCuit="[in_Config(&quot;regexCuit&quot;).ToString]" in_searchedCUIT="[in_Cuit]" out_validCuit="[validCuit]" />
+            <If Condition="[validCuit=True]" DisplayName="If - Is Valid CUIT" sap:VirtualizedContainerService.HintSize="1024.8,2365.6" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -259,7 +259,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="375.2,548.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence sap:VirtualizedContainerService.HintSize="989.6,2186.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="notificationMessage" />
                     <Variable x:TypeArguments="x:String" Name="attachmentPath" />
@@ -271,26 +271,20 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <a:GetNotificationsReceiverName sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="GetNotificationsReceiverName_1" notificationReceiverName="[notificationReceiverName]" />
-                  <a:GetNotificationMessage sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="GetNotificationMessage_1" out_NotificationMessage="[notificationMessage]" />
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File - Get Notification's Criticality" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="GetNotificationsCriticality.xaml">
+                  <a:GetNotificationsReceiverName sap:VirtualizedContainerService.HintSize="948,22.4" sap2010:WorkflowViewState.IdRef="GetNotificationsReceiverName_1" notificationReceiverName="[notificationReceiverName]" />
+                  <a:GetNotificationMessage sap:VirtualizedContainerService.HintSize="948,22.4" sap2010:WorkflowViewState.IdRef="GetNotificationMessage_1" out_NotificationMessage="[notificationMessage]" />
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File - Get Notification's Criticality" sap:VirtualizedContainerService.HintSize="948,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="GetNotificationsCriticality.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_NotificationMessage">
-                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="notificationMessage" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Criticalities">
-                        <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_Criticalities" />
-                      </InArgument>
-                      <OutArgument x:TypeArguments="x:String" x:Key="out_NotificationCriticality">
-                        <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="notificationCriticality" />
-                      </OutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_NotificationMessage">[notificationMessage]</InArgument>
+                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Criticalities">[in_Criticalities]</InArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_NotificationCriticality">[notificationCriticality]</OutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <a:HasAttachment sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="HasAttachment_1" out_attachmentExists="[attachmentExists]" />
-                  <If Condition="[attachmentExists]" DisplayName="If - Attachment Exists" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="If_3">
+                  <a:HasAttachment sap:VirtualizedContainerService.HintSize="948,22.4" sap2010:WorkflowViewState.IdRef="HasAttachment_1" out_attachmentExists="[attachmentExists]" />
+                  <If Condition="[attachmentExists]" DisplayName="If - Attachment Exists" sap:VirtualizedContainerService.HintSize="948,1690.4" sap2010:WorkflowViewState.IdRef="If_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -332,7 +326,7 @@
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DisplayName="Find - Clientes Folder" FirstResultId="[clientesFolderID]" sap:VirtualizedContainerService.HintSize="483.2,80.8" sap2010:WorkflowViewState.IdRef="FindFiles_2" MaxResults="50" SearchExpression="name = 'Clientes'" SupportsTeamDrives="False" />
+                                  <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DisplayName="Find - Clientes Folder" FirstResultId="[clientesFolderID]" sap:VirtualizedContainerService.HintSize="483.2,80.8" sap2010:WorkflowViewState.IdRef="FindFiles_2" MaxResults="50" SearchExpression="[&quot;name = '&quot;+in_Config(&quot;clientsFolder&quot;).ToString+&quot;'&quot;]" SupportsTeamDrives="False" />
                                   <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DisplayName="Find - Cuit Folder" FirstResultId="[CuitFolderID]" sap:VirtualizedContainerService.HintSize="483.2,80.8" sap2010:WorkflowViewState.IdRef="FindFiles_3" MaxResults="50" SearchExpression="[&quot;name = '&quot;+in_Cuit+&quot;-&quot;+notificationReceiverName+&quot;'&quot;]" SupportsTeamDrives="False" />
                                   <If Condition="[String.IsNullOrEmpty(cuitFolderID)]" DisplayName="If - cuitFolder does not exist" sap:VirtualizedContainerService.HintSize="483.2,362.4" sap2010:WorkflowViewState.IdRef="If_7">
                                     <If.Then>
@@ -375,11 +369,11 @@
                       </Assign>
                     </If.Else>
                   </If>
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_Cuit,notificationReceiverName,cuitType,in_NotificationDate,attachmentExists.ToString,cuitFolderLink.ToString,&quot;Procesado OK&quot;,notificationMessage,notificationCriticality}]" DataTable="[out_CuitNotificationsTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_Cuit,notificationReceiverName,cuitType,in_NotificationDate,attachmentExists.ToString,cuitFolderLink.ToString,&quot;Procesado OK&quot;,notificationMessage,notificationCriticality}]" DataTable="[out_CuitNotificationsTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="948,22.4" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                 </Sequence>
               </If.Then>
             </If>
-            <Assign DisplayName="Assign - Increment currentNotification" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign DisplayName="Assign - Increment currentNotification" sap:VirtualizedContainerService.HintSize="1024.8,60" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Int32">[currentNotification]</OutArgument>
               </Assign.To>
@@ -399,20 +393,20 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:InterruptibleWhile>
-      <If Condition="[out_CuitNotificationsTable.Rows.Count&lt;=0]" DisplayName="If - No notification found" sap:VirtualizedContainerService.HintSize="652,239.2" sap2010:WorkflowViewState.IdRef="If_5">
+      <If Condition="[out_CuitNotificationsTable.Rows.Count&lt;=0]" DisplayName="If - No notification found" sap:VirtualizedContainerService.HintSize="1101.6,239.2" sap2010:WorkflowViewState.IdRef="If_5">
         <If.Then>
           <Throw DisplayName="Throw - No notification found - Business Exception" Exception="[new BusinessRuleException(&quot;No se encontraron notificaciones en AFIP para el CUIT: &quot;+in_Cuit+&quot; en la fecha: &quot;+in_NotificationDate)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_3" />
         </If.Then>
       </If>
-      <TryCatch DisplayName="Try Catch - LogOut" sap:VirtualizedContainerService.HintSize="652,328" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+      <TryCatch DisplayName="Try Catch - LogOut" sap:VirtualizedContainerService.HintSize="1101.6,187.2" sap2010:WorkflowViewState.IdRef="TryCatch_2">
         <TryCatch.Try>
           <a:LogOut sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="LogOut_1" />
         </TryCatch.Try>
         <TryCatch.Catches>
-          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,163.2" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
