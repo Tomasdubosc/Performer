@@ -1,11 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="updateExecutionReport" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ug="clr-namespace:UiPath.GSuite;assembly=UiPath.GSuite" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="updateExecutionReport" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ug="clr-namespace:UiPath.GSuite;assembly=UiPath.GSuite" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_GDriveIDOauth" Type="InArgument(x:String)" />
     <x:Property Name="in_GDriveSecretOauth" Type="InArgument(ss:SecureString)" />
     <x:Property Name="in_ExecutionReportID" Type="InArgument(x:String)" />
     <x:Property Name="in_CuitNotificationsTable" Type="InArgument(sd:DataTable)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1794,728</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1794.4,869.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -84,9 +84,10 @@
       <AssemblyReference>Google.Apis</AssemblyReference>
       <AssemblyReference>Google.Apis.Core</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" KeyPath="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="OAuthClientID" CredentialID="[in_GDriveIDOauth]" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="434,663" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_3" KeyType="JSON" OAuthClient="UiPath" Password="notasecret" SecureCredentialSecret="[in_GDriveSecretOauth]" Services="Unselected">
+  <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" KeyPath="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="OAuthClientID" CredentialID="[in_GDriveIDOauth]" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="433.6,804.8" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_3" KeyType="JSON" OAuthClient="UiPath" Password="notasecret" SecureCredentialSecret="[in_GDriveSecretOauth]" Services="Unselected">
     <uga:GSuiteApplicationScope.AuthenticationScopes>
       <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
     </uga:GSuiteApplicationScope.AuthenticationScopes>
@@ -95,7 +96,7 @@
         <ActivityAction.Argument>
           <DelegateInArgument x:TypeArguments="ug:SimpleObjectContainer" Name="GSuiteScope" />
         </ActivityAction.Argument>
-        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,552" sap2010:WorkflowViewState.IdRef="Sequence_34">
+        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,692.8" sap2010:WorkflowViewState.IdRef="Sequence_34">
           <Sequence.Variables>
             <Variable x:TypeArguments="sd:DataTable" Name="reportTable" />
             <Variable x:TypeArguments="sd:DataTable" Name="currentReportTable" />
@@ -105,8 +106,9 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Range="{x:Null}" AuthScopesInvalid="False" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="334,210" sap2010:WorkflowViewState.IdRef="ReadRange_1" IncludeHeaders="True" Result="[currentReportTable]" SheetName="Hoja 1" SpreadsheetId="[in_ExecutionReportID]" />
-          <uga:WriteRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DataTable="[in_CuitNotificationsTable]" DisplayName="Write Range - Append Rows to Current Report" sap:VirtualizedContainerService.HintSize="334,210" sap2010:WorkflowViewState.IdRef="WriteRange_1" IncludeHeaders="False" IsInsideBatchUpdateScope="False" SheetName="Hoja 1" SpreadsheetId="[in_ExecutionReportID]" StartingCell="[&quot;A&quot; + (currentReportTable.Rows.Count+2).Tostring]" />
+          <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Range="{x:Null}" AuthScopesInvalid="False" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,213.6" sap2010:WorkflowViewState.IdRef="ReadRange_1" IncludeHeaders="True" Result="[currentReportTable]" SheetName="Hoja 1" SpreadsheetId="[in_ExecutionReportID]" />
+          <uga:WriteRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" Request="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DataTable="[in_CuitNotificationsTable]" DisplayName="Write Range - Append Rows to Current Report" sap:VirtualizedContainerService.HintSize="333.6,213.6" sap2010:WorkflowViewState.IdRef="WriteRange_1" IncludeHeaders="False" IsInsideBatchUpdateScope="False" SheetName="Hoja 1" SpreadsheetId="[in_ExecutionReportID]" StartingCell="[&quot;A&quot; + (currentReportTable.Rows.Count+2).Tostring]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Report Updated with new rows.&quot;]" />
         </Sequence>
       </ActivityAction>
     </uga:GSuiteApplicationScope.Body>
