@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1794.4,710.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1208,960</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>EvaluateNotificationsCriticality_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -46,7 +46,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="21">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="42">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -68,15 +68,22 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetNotificationsCriticality" sap:VirtualizedContainerService.HintSize="600,900.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetNotificationsCriticality" sap:VirtualizedContainerService.HintSize="602,795" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - Default criticality" sap:VirtualizedContainerService.HintSize="558.4,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign DisplayName="Assign - Default criticality" sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_NotificationCriticality]</OutArgument>
       </Assign.To>
@@ -84,13 +91,13 @@
         <InArgument x:TypeArguments="x:String">No definido</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_Criticalities]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="558.4,708" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_Criticalities]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="560,603" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,587.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,483" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="isMatch" />
             </Sequence.Variables>
@@ -100,23 +107,15 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Assign - IsMatch" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_4">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:Boolean">[isMatch]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:Boolean">[System.text.RegularExpressions.Regex.IsMatch(in_NotificationMessage.ToLower,"(\s*"+Row("Word").ToString+"\s*)")]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <If Condition="[isMatch]" DisplayName="If - Found Criticality" sap:VirtualizedContainerService.HintSize="483.2,394.4" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[in_NotificationMessage.toLower.Contains(Row(&quot;Word&quot;).ToString.toLower)]" DisplayName="If - Criticality Word Found" sap:VirtualizedContainerService.HintSize="484,391" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="304,215.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Assign - Found Criticality" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign DisplayName="Assign - Found Criticality" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[out_NotificationCriticality]</OutArgument>
                     </Assign.To>
@@ -124,7 +123,7 @@
                       <InArgument x:TypeArguments="x:String">[Row("Criticality").ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:Break DisplayName="Break - Exit While" sap:VirtualizedContainerService.HintSize="262.4,22.4" sap2010:WorkflowViewState.IdRef="Break_1" />
+                  <ui:Break DisplayName="Break - Exit While" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="Break_1" />
                 </Sequence>
               </If.Then>
             </If>
