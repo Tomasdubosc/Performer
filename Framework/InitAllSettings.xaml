@@ -4,6 +4,7 @@
     <x:Property sap2010:Annotation.AnnotationText="Datos de configuración del proceso alojados en una estructura de diccionario." Name="out_Config" Type="OutArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_CriticalitySheet" Type="InArgument(x:String)" />
     <x:Property Name="out_Criticalities" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="in_gDriveKeyPath" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -135,7 +136,7 @@
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="518,532" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="C:\Users\Sol\Downloads\rparobot-311121-e58f7d75839b.json" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
+            <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="518,532" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="[in_gDriveKeyPath]" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
               <uga:GSuiteApplicationScope.AuthenticationScopes>
                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                   <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.readonly</InArgument>
@@ -199,7 +200,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope - Read Criticality Sheet" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="638,532" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_3" KeyPath="C:\Users\Sol\Downloads\rparobot-311121-e58f7d75839b.json" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
+    <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope - Read Criticality Sheet" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="638,532" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_3" KeyPath="[in_gDriveKeyPath]" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
       <uga:GSuiteApplicationScope.AuthenticationScopes>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
           <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.readonly</InArgument>
@@ -273,7 +274,7 @@
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="558,532" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_2" KeyPath="C:\Users\Sol\Downloads\rparobot-311121-e58f7d75839b.json" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
+          <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="558,532" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_2" KeyPath="[in_gDriveKeyPath]" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
             <uga:GSuiteApplicationScope.AuthenticationScopes>
               <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                 <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.readonly</InArgument>
@@ -349,7 +350,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
                         </ActivityAction.Argument>
-                        <If sap2010:Annotation.AnnotationText="Logs a warn message in case the asset is specified in the Config file, but it could not be loaded from Orchestrator." Condition="[Not String.IsNullOrWhiteSpace(Row(&quot;Name&quot;).ToString.Trim)]" DisplayName="If asset name is specified, log warning" sap:VirtualizedContainerService.HintSize="484,301" sap2010:WorkflowViewState.IdRef="If_5">
+                        <If sap2010:Annotation.AnnotationText="Logs a warn message in case the asset is specified in the Config file, but it could not be loaded from Orchestrator." Condition="[Not String.IsNullOrWhiteSpace(Row(&quot;Name&quot;).ToString.Trim)]" DisplayName="If asset name is specified, log warning" sap:VirtualizedContainerService.HintSize="484,299" sap2010:WorkflowViewState.IdRef="If_5">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

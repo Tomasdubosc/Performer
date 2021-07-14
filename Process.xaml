@@ -8,6 +8,7 @@
     <x:Property Name="out_CuitNotificationsTable" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="in_isBlacklisted" Type="InArgument(x:Boolean)" />
     <x:Property Name="in_Criticalities" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_gDriveKeyPath" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -293,7 +294,7 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <a:DownloadAttachment sap:VirtualizedContainerService.HintSize="602,22" sap2010:WorkflowViewState.IdRef="DownloadAttachment_2" in_downloadFolder="[in_Config(&quot;localDownloadFolder&quot;).ToString]" out_attachmentPath="[attachmentPath]" />
-                        <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="602,1358" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="C:\Users\Sol\Downloads\rparobot-311121-e58f7d75839b.json" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
+                        <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="602,1358" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="[in_gDriveKeyPath]" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
                           <uga:GSuiteApplicationScope.AuthenticationScopes>
                             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                               <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.file</InArgument>

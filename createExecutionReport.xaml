@@ -3,6 +3,7 @@
     <x:Property Name="out_ExecutionReportID" Type="OutArgument(x:String)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="out_ExecutionFolderLink" Type="OutArgument(x:String)" />
+    <x:Property Name="in_gDriveKeyPath" Type="InArgument(x:String)" />
   </x:Members>
   <sap:VirtualizedContainerService.HintSize>1794,1055</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
@@ -86,7 +87,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="434,898" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_2" KeyPath="C:\Users\Sol\Downloads\rparobot-311121-e58f7d75839b.json" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
+    <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="434,898" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_2" KeyPath="[in_gDriveKeyPath]" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
       <uga:GSuiteApplicationScope.AuthenticationScopes>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
           <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive</InArgument>

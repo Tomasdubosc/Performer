@@ -2,6 +2,7 @@
   <x:Members>
     <x:Property Name="in_ExecutionReportID" Type="InArgument(x:String)" />
     <x:Property Name="in_CuitNotificationsTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_gDriveKeyPath" Type="InArgument(x:String)" />
   </x:Members>
   <sap:VirtualizedContainerService.HintSize>1794,861</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
@@ -84,7 +85,7 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="434,796" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_3" KeyPath="C:\Users\Sol\Downloads\rparobot-311121-e58f7d75839b.json" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
+  <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="434,796" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_3" KeyPath="[in_gDriveKeyPath]" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
     <uga:GSuiteApplicationScope.AuthenticationScopes>
       <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
         <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/spreadsheets</InArgument>
