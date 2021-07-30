@@ -13,7 +13,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1794,5530</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1181,5693</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="51">
@@ -109,7 +109,7 @@
       <AssemblyReference>Microsoft.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1191,5465" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1191,5628" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ss:SecureString" Name="afip_password" />
       <Variable x:TypeArguments="x:String" Name="afip_username" />
@@ -125,7 +125,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="1149,5301" sap2010:WorkflowViewState.IdRef="Sequence_7">
+    <Sequence sap:VirtualizedContainerService.HintSize="1149,5464" sap2010:WorkflowViewState.IdRef="Sequence_7">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -215,9 +215,9 @@
           <InArgument x:TypeArguments="x:Int32">1</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:InterruptibleWhile DisplayName="While - Pending Notifications" sap:VirtualizedContainerService.HintSize="1107,2909" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+      <ui:InterruptibleWhile DisplayName="While - Pending Notifications" sap:VirtualizedContainerService.HintSize="1107,3072" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
         <ui:InterruptibleWhile.Body>
-          <Sequence DisplayName="Body - Pending Notifications" sap:VirtualizedContainerService.HintSize="1071,2744" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body - Pending Notifications" sap:VirtualizedContainerService.HintSize="1071,2907" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="validCuit" />
               <Variable x:TypeArguments="x:String" Name="cuitFolderLink" />
@@ -249,7 +249,7 @@
             </If>
             <a:OpenNotification sap:VirtualizedContainerService.HintSize="1029,22" sap2010:WorkflowViewState.IdRef="OpenNotification_1" in_notificationIndex="[currentNotification]" />
             <a:ValidateCuitNotification sap:VirtualizedContainerService.HintSize="1029,22" sap2010:WorkflowViewState.IdRef="ValidateCuitNotification_1" in_regexCuit="[in_Config(&quot;regexCuit&quot;).ToString]" in_searchedCUIT="[in_Cuit]" out_validCuit="[validCuit]" />
-            <If Condition="[validCuit=True]" DisplayName="If - Is Valid CUIT" sap:VirtualizedContainerService.HintSize="1029,2337" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[validCuit=True]" DisplayName="If - Is Valid CUIT" sap:VirtualizedContainerService.HintSize="1029,2500" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -257,7 +257,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="993,2161" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence sap:VirtualizedContainerService.HintSize="993,2324" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="notificationMessage" />
                     <Variable x:TypeArguments="x:String" Name="attachmentPath" />
@@ -297,7 +297,7 @@
                         <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="602,1358" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="[in_gDriveKeyPath]" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
                           <uga:GSuiteApplicationScope.AuthenticationScopes>
                             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-                              <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.file</InArgument>
+                              <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive</InArgument>
                             </scg:List>
                           </uga:GSuiteApplicationScope.AuthenticationScopes>
                           <uga:GSuiteApplicationScope.Body>
@@ -367,7 +367,7 @@
                       </Assign>
                     </If.Else>
                   </If>
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_Cuit,notificationReceiverName,cuitType,in_NotificationDate,attachmentExists.ToString,cuitFolderLink.ToString,&quot;Procesado OK&quot;,notificationMessage,notificationCriticality}]" DataTable="[out_CuitNotificationsTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="951,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_Cuit,notificationReceiverName,cuitType,in_NotificationDate,attachmentExists.ToString,cuitFolderLink.ToString,&quot;Procesado OK&quot;,notificationMessage,notificationCriticality}]" DataTable="[out_CuitNotificationsTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="951,185" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                 </Sequence>
               </If.Then>
             </If>
