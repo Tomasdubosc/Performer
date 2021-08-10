@@ -1,13 +1,13 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="testGmailConnection" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="out_mailUsername" Type="OutArgument(x:String)" />
-    <x:Property Name="out_mailPassword" Type="OutArgument(ss:SecureString)" />
+    <x:Property sap2010:Annotation.AnnotationText="Configuraciones del Config File en un diccionario" Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property sap2010:Annotation.AnnotationText="Usuario de Gmail" Name="out_mailUsername" Type="OutArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Contraseña de Gmail" Name="out_mailPassword" Type="OutArgument(ss:SecureString)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1794.4,640</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>871,739</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>testGmailConnection_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -70,21 +70,21 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.GSuite.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="testGmailConnection" sap:VirtualizedContainerService.HintSize="375.2,492.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Obtiene las credenciales de Gmail alojadas en Orchestrator. Con ellas para realiza una prueba de conexión con los servidores Gmail mediante SMTP eniviando un mail a la casillas de distribución especificadas en el Config File.  Devuelve las credenciales para su futuro uso en el proceso." DisplayName="testGmailConnection" sap:VirtualizedContainerService.HintSize="376,574" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;emailCredential&quot;).ToString]" DisplayName="Get Gmail Credentials" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[out_mailPassword]" Username="[out_MailUsername]" />
-    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Body="Gmail connection is OK" DisplayName="Send SMTP Mail Message - Test Gmail Connection" Email="[out_mailUsername]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Port="465" SecureConnection="Auto" SecurePassword="[out_mailPassword]" Server="smtp.gmail.com" Subject="Robot - Performer - Gmail Connection" To="[in_Config(&quot;distributionListOnSucessStartGmail&quot;).ToString]">
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;emailCredential&quot;).ToString]" DisplayName="Get Gmail Credentials" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[out_mailPassword]" Username="[out_MailUsername]" />
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Body="Gmail connection is OK" DisplayName="Send SMTP Mail Message - Test Gmail Connection" Email="[out_mailUsername]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Port="465" SecureConnection="Auto" SecurePassword="[out_mailPassword]" Server="smtp.gmail.com" Subject="Robot - Performer - Gmail Connection" To="[in_Config(&quot;distributionListOnSucessStartGmail&quot;).ToString]">
       <ui:SendMail.Files>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
       </ui:SendMail.Files>
     </ui:SendMail>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;TestGmailConnection OK&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;TestGmailConnection OK&quot;]" />
   </Sequence>
 </Activity>

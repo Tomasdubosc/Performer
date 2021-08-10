@@ -1,13 +1,13 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="EvaluateNotificationsCriticality" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_NotificationMessage" Type="InArgument(x:String)" />
-    <x:Property Name="in_Criticalities" Type="InArgument(sd:DataTable)" />
-    <x:Property Name="out_NotificationCriticality" Type="OutArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Mensaje de la notificación que se quiere analizar." Name="in_NotificationMessage" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Tabla de criticidades por palabra. Se utiliza la tabla para determinar la criticidad de las notificaciones encontradas." Name="in_Criticalities" Type="InArgument(sd:DataTable)" />
+    <x:Property sap2010:Annotation.AnnotationText="Criticidad de la notificación" Name="out_NotificationCriticality" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,960</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>871,1055</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>EvaluateNotificationsCriticality_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -77,10 +77,11 @@
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetNotificationsCriticality" sap:VirtualizedContainerService.HintSize="602,795" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Determina la criticidad de una notificación en base al mensaje de la misma. Utiliza la tabla de criticidades recibida por parámetro. En caso de que mas de una criticidad aplique, devuelve la primera." DisplayName="GetNotificationsCriticality" sap:VirtualizedContainerService.HintSize="602,890" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Assign DisplayName="Assign - Default criticality" sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_3">
@@ -91,7 +92,7 @@
         <InArgument x:TypeArguments="x:String">No definido</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_Criticalities]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="560,603" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_Criticalities]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="560,656" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>

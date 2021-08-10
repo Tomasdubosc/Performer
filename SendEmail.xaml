@@ -3,16 +3,16 @@
     <x:Property sap2010:Annotation.AnnotationText="Destinatario del mail. Pueden ser varios destinatarios si se separa por punto y coma." Name="in_to" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Asunto del mail." Name="in_subject" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Cuerpo del mail." Name="in_body" Type="InOutArgument(x:String)" />
-    <x:Property Name="in_mailUsername" Type="InArgument(x:String)" />
-    <x:Property Name="in_mailPassword" Type="InArgument(ss:SecureString)" />
-    <x:Property Name="in_executionFolderLink" Type="InArgument(x:String)" />
-    <x:Property Name="in_executionReportID" Type="InArgument(x:String)" />
-    <x:Property Name="in_gDriveKeyPath" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Usuario Gmail desde donde se envía el mail final" Name="in_mailUsername" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Contraseña de Gmail desde donde se envía el mail final" Name="in_mailPassword" Type="InArgument(ss:SecureString)" />
+    <x:Property sap2010:Annotation.AnnotationText="Link de la carpeta de Google Drive que contiene los reportes de todas las ejecuciones del proceso. " Name="in_executionFolderLink" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="ID del archivo de Reporte de ejecución ubicado en Google Drive" Name="in_executionReportID" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Ubicación local del archivo que posee la key para consumir la API de GDrive" Name="in_gDriveKeyPath" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>717,4428</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>871,4550</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SendEmail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="47">
@@ -103,10 +103,9 @@
       <AssemblyReference>UiPath.GSuite</AssemblyReference>
       <AssemblyReference>Google.Apis.Drive.v3</AssemblyReference>
       <AssemblyReference>Google.Apis</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Recibe como parámetro un destinatario, un asunto y el cuerpo para poder enviar un mail." DisplayName="SendEmail" sap:VirtualizedContainerService.HintSize="554,4363" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Envía mail final al usuario notificando error o la correcta ejecución del proceso.&#xD;&#xA;Si el proceso se ejecutó de manera satisfactoria, se adjunta el reporte de ejecución y se crea una tabla que contiene un resumen del mismo." DisplayName="SendEmail" sap:VirtualizedContainerService.HintSize="554,4385" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="[Date.Now.toString(&quot;dd/MM/yyyy HH:mm:ss&quot;)]" Name="executionDate" />
       <Variable x:TypeArguments="sd:DataTable" Name="executionReportDataTable" />
@@ -127,9 +126,9 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:Replace BuilderPattern="##executionDate##" DisplayName="Replace - executionDate Body" sap:VirtualizedContainerService.HintSize="512,59" sap2010:WorkflowViewState.IdRef="Replace_2" Input="[in_body]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;##executionDate##&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="##executionDate##" RegexOption="IgnoreCase" Replacement="[executionDate]" Result="[in_body]" />
     <ui:Replace BuilderPattern="##executionDate##" DisplayName="Replace - executionDate Subject" sap:VirtualizedContainerService.HintSize="512,59" sap2010:WorkflowViewState.IdRef="Replace_3" Input="[in_subject]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;##executionDate##&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="##executionDate##" RegexOption="IgnoreCase" Replacement="[executionDate]" Result="[in_subject]" />
-    <If Condition="[not (in_subject.Contains(&quot;Fallo&quot;))]" DisplayName="If - Inicialization doesn't failed" sap:VirtualizedContainerService.HintSize="512,3726" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[not (in_subject.Contains(&quot;Fallo&quot;))]" DisplayName="If - Inicialization doesn't failed" sap:VirtualizedContainerService.HintSize="512,3722" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="476,3549" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap:VirtualizedContainerService.HintSize="476,3545" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="summaryByCriticalityHTML" />
             <Variable x:TypeArguments="sd:DataTable" Name="businessExceptionTable" />
@@ -141,7 +140,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:Replace BuilderPattern="##in_executionFolderLink##" DisplayName="Replace - executionFolderLink" sap:VirtualizedContainerService.HintSize="434,59" sap2010:WorkflowViewState.IdRef="Replace_1" Input="[in_body]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;##in_executionFolderLink##&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="##in_executionFolderLink##" RegexOption="IgnoreCase" Replacement="[in_executionFolderLink]" Result="[in_body]" />
-          <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="434,417" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_2" KeyPath="[in_gDriveKeyPath]" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
+          <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" Password="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="434,413" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_2" KeyPath="[in_gDriveKeyPath]" KeyType="JSON" OAuthClient="UiPath" Services="Unselected">
             <uga:GSuiteApplicationScope.AuthenticationScopes>
               <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                 <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.readonly</InArgument>
@@ -152,13 +151,13 @@
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="ug:SimpleObjectContainer" Name="GSuiteScope" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do - Read Execution Report" sap:VirtualizedContainerService.HintSize="375.2,306.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Do - Read Execution Report" sap:VirtualizedContainerService.HintSize="376,302" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" AuthScopesInvalid="False" DisplayName="Read Range from Execution Report" sap:VirtualizedContainerService.HintSize="333.6,213.6" sap2010:WorkflowViewState.IdRef="ReadRange_1" IncludeHeaders="True" Range="A1:I200" Result="[executionReportDataTable]" SheetName="Hoja 1" SpreadsheetId="[in_executionReportID]" />
+                  <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" AuthScopesInvalid="False" DisplayName="Read Range from Execution Report" sap:VirtualizedContainerService.HintSize="334,210" sap2010:WorkflowViewState.IdRef="ReadRange_1" IncludeHeaders="True" Range="A1:I200" Result="[executionReportDataTable]" SheetName="Hoja 1" SpreadsheetId="[in_executionReportID]" />
                 </Sequence>
               </ActivityAction>
             </uga:GSuiteApplicationScope.Body>
