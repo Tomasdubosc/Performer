@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>871,4550</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>712,4450</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SendEmail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="47">
@@ -105,7 +105,7 @@
       <AssemblyReference>Google.Apis</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Envía mail final al usuario notificando error o la correcta ejecución del proceso.&#xD;&#xA;Si el proceso se ejecutó de manera satisfactoria, se adjunta el reporte de ejecución y se crea una tabla que contiene un resumen del mismo." DisplayName="SendEmail" sap:VirtualizedContainerService.HintSize="554,4385" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Envía mail final al usuario notificando error o la correcta ejecución del proceso.&#xA;Si el proceso se ejecutó de manera satisfactoria, se adjunta el reporte de ejecución y se crea una tabla que contiene un resumen del mismo." DisplayName="SendEmail" sap:VirtualizedContainerService.HintSize="554,4385" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="[Date.Now.toString(&quot;dd/MM/yyyy HH:mm:ss&quot;)]" Name="executionDate" />
       <Variable x:TypeArguments="sd:DataTable" Name="executionReportDataTable" />
@@ -126,7 +126,7 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:Replace BuilderPattern="##executionDate##" DisplayName="Replace - executionDate Body" sap:VirtualizedContainerService.HintSize="512,59" sap2010:WorkflowViewState.IdRef="Replace_2" Input="[in_body]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;##executionDate##&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="##executionDate##" RegexOption="IgnoreCase" Replacement="[executionDate]" Result="[in_body]" />
     <ui:Replace BuilderPattern="##executionDate##" DisplayName="Replace - executionDate Subject" sap:VirtualizedContainerService.HintSize="512,59" sap2010:WorkflowViewState.IdRef="Replace_3" Input="[in_subject]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;##executionDate##&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="##executionDate##" RegexOption="IgnoreCase" Replacement="[executionDate]" Result="[in_subject]" />
-    <If Condition="[not (in_subject.Contains(&quot;Fallo&quot;))]" DisplayName="If - Inicialization doesn't failed" sap:VirtualizedContainerService.HintSize="512,3722" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[not (in_subject.Contains(&quot;Ocurrió un error en la inicializacion&quot;))]" DisplayName="If - Inicialization doesn't failed" sap:VirtualizedContainerService.HintSize="512,3722" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="476,3545" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <Sequence.Variables>
