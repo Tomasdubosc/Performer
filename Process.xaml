@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1181,6073</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1181,5973</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="51">
@@ -109,7 +109,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Realiza el páso a paso para procesar una transacción.&#xD;&#xA;&#xD;&#xA;Si ocurre una &quot;Business Exception&quot;, se finaliza el procesamiento de la transacción y se marca con ese estado.&#xD;&#xA;Si ocurre otro tipo de excepción, se finaliza el procesamiento de la transacción, se marca con ese estado y se reingresa en la cola de trabajo para que la misma pueda volver a ser reintentada.&#xA;" DisplayName="Process" sap:VirtualizedContainerService.HintSize="1191,5908" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Realiza el páso a paso para procesar una transacción.&#xA;&#xA;Si ocurre una &quot;Business Exception&quot;, se finaliza el procesamiento de la transacción y se marca con ese estado.&#xA;Si ocurre otro tipo de excepción, se finaliza el procesamiento de la transacción, se marca con ese estado y se reingresa en la cola de trabajo para que la misma pueda volver a ser reintentada.&#xA;" DisplayName="Process" sap:VirtualizedContainerService.HintSize="1191,5908" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ss:SecureString" Name="afip_password" />
       <Variable x:TypeArguments="x:String" Name="afip_username" />
@@ -208,7 +208,7 @@
       </TryCatch>
       <a:Login DisplayName="AFIP-Login" sap:VirtualizedContainerService.HintSize="1107,22" sap2010:WorkflowViewState.IdRef="Login_1" in_password="[afip_password]" in_username="[afip_username]" />
       <a:GoToDomicilioFiscalElectronico DisplayName="AFIP-GoToDomicilioFiscalElectronico" sap:VirtualizedContainerService.HintSize="1107,22" sap2010:WorkflowViewState.IdRef="GoToDomicilioFiscalElectronico_1" />
-      <If Condition="[in_Cuit.StartsWith(&quot;2&quot;)]" DisplayName="If - Persona Física" sap:VirtualizedContainerService.HintSize="1107,372" sap2010:WorkflowViewState.IdRef="If_1">
+      <If Condition="[in_Cuit.StartsWith(&quot;2&quot;) AND in_Cuit=afip_username]" DisplayName="If - Persona Física" sap:VirtualizedContainerService.HintSize="1107,372" sap2010:WorkflowViewState.IdRef="If_1">
         <If.Then>
           <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_9">
             <sap:WorkflowViewStateService.ViewState>
