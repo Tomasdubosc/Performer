@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>712,4450</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1794,4875</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SendEmail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="47">
@@ -66,7 +66,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="37">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -105,7 +105,7 @@
       <AssemblyReference>Google.Apis</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Envía mail final al usuario notificando error o la correcta ejecución del proceso.&#xA;Si el proceso se ejecutó de manera satisfactoria, se adjunta el reporte de ejecución y se crea una tabla que contiene un resumen del mismo." DisplayName="SendEmail" sap:VirtualizedContainerService.HintSize="554,4385" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Envía mail final al usuario notificando error o la correcta ejecución del proceso.&#xA;Si el proceso se ejecutó de manera satisfactoria, se adjunta el reporte de ejecución y se crea una tabla que contiene un resumen del mismo." DisplayName="SendEmail" sap:VirtualizedContainerService.HintSize="554,4810" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="[Date.Now.toString(&quot;dd/MM/yyyy HH:mm:ss&quot;)]" Name="executionDate" />
       <Variable x:TypeArguments="sd:DataTable" Name="executionReportDataTable" />
@@ -126,13 +126,14 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:Replace BuilderPattern="##executionDate##" DisplayName="Replace - executionDate Body" sap:VirtualizedContainerService.HintSize="512,59" sap2010:WorkflowViewState.IdRef="Replace_2" Input="[in_body]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;##executionDate##&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="##executionDate##" RegexOption="IgnoreCase" Replacement="[executionDate]" Result="[in_body]" />
     <ui:Replace BuilderPattern="##executionDate##" DisplayName="Replace - executionDate Subject" sap:VirtualizedContainerService.HintSize="512,59" sap2010:WorkflowViewState.IdRef="Replace_3" Input="[in_subject]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;##executionDate##&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="##executionDate##" RegexOption="IgnoreCase" Replacement="[executionDate]" Result="[in_subject]" />
-    <If Condition="[not (in_subject.Contains(&quot;Fallo la Inicialización&quot;))]" DisplayName="If - Inicialization doesn't failed" sap:VirtualizedContainerService.HintSize="512,3722" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[not (in_subject.Contains(&quot;Fallo la Inicialización&quot;))]" DisplayName="If - Inicialization doesn't failed" sap:VirtualizedContainerService.HintSize="512,4147" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="476,3545" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap:VirtualizedContainerService.HintSize="476,3970" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="summaryByCriticalityHTML" />
             <Variable x:TypeArguments="sd:DataTable" Name="businessExceptionTable" />
             <Variable x:TypeArguments="sd:DataTable" Name="systemExceptionTable" />
+            <Variable x:TypeArguments="sd:DataTable" Name="blacklistTable" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -282,6 +283,25 @@
               </scg:List>
             </ui:FilterDataTable.SelectColumns>
           </ui:FilterDataTable>
+          <ui:FilterDataTable DataTable="[executionReportDataTable]" DisplayName="Filter Data Table - obtain Blacklist rows" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="434,160" sap2010:WorkflowViewState.IdRef="FilterDataTable_7" OutputDataTable="[blacklistTable]" SelectColumnsMode="Keep">
+            <ui:FilterDataTable.Filters>
+              <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                  <ui:FilterOperationArgument.Column>
+                    <InArgument x:TypeArguments="x:String">["ESTADO"]</InArgument>
+                  </ui:FilterOperationArgument.Column>
+                  <ui:FilterOperationArgument.Operand>
+                    <InArgument x:TypeArguments="x:String">["Blacklist"]</InArgument>
+                  </ui:FilterOperationArgument.Operand>
+                </ui:FilterOperationArgument>
+              </scg:List>
+            </ui:FilterDataTable.Filters>
+            <ui:FilterDataTable.SelectColumns>
+              <scg:List x:TypeArguments="InArgument" Capacity="4">
+                <x:Null />
+              </scg:List>
+            </ui:FilterDataTable.SelectColumns>
+          </ui:FilterDataTable>
           <ui:BuildDataTable DataTable="[summaryByCriticalityTable]" DisplayName="Build Data Table - Summary by Criticality" sap:VirtualizedContainerService.HintSize="434,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Criticidad&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Cantidad&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Criticidad&gt;Criticidad / Excepciones&lt;/Criticidad&gt;&#xA;    &lt;Cantidad&gt;Cantidad de notificaciones encontradas&lt;/Cantidad&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;" />
           <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Alta&quot;,highCriticalityTable.Rows.Count.ToString}]" DataTable="[summaryByCriticalityTable]" DisplayName="Add Data Row - High" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
           <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Media&quot;,mediumCriticalityTable.Rows.Count.ToString}]" DataTable="[summaryByCriticalityTable]" DisplayName="Add Data Row - Medium" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
@@ -289,6 +309,7 @@
           <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;No definido&quot;,notDefinedCriticalityTable.Rows.Count.ToString}]" DataTable="[summaryByCriticalityTable]" DisplayName="Add Data Row - Not Defined" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="AddDataRow_4" />
           <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Excepcion de Negocio&quot;,businessExceptionTable.Rows.Count.ToString}]" DataTable="[summaryByCriticalityTable]" DisplayName="Add Data Row - BusinessException" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="AddDataRow_5" />
           <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Excepcion de Sistema&quot;,systemExceptionTable.Rows.Count.ToString}]" DataTable="[summaryByCriticalityTable]" DisplayName="Add Data Row - SystemException" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="AddDataRow_6" />
+          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Blacklist Mails&quot;,blacklistTable.Rows.Count.ToString}]" DataTable="[summaryByCriticalityTable]" DisplayName="Add Data Row - Blacklist" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="AddDataRow_7" />
           <umab:CreateHtmlContent DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="434,152" HtmlContent="[summaryByCriticalityHTML]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_1">
             <umab:CreateHtmlContent.HtmlContentArg>
               <umabh:HtmlContentArgument FilePath=".data/HtmlContent0.html">
