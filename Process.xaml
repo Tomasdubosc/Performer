@@ -107,7 +107,6 @@
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
       <AssemblyReference>Microsoft.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Realiza el páso a paso para procesar una transacción.&#xA;&#xA;Si ocurre una &quot;Business Exception&quot;, se finaliza el procesamiento de la transacción y se marca con ese estado.&#xA;Si ocurre otro tipo de excepción, se finaliza el procesamiento de la transacción, se marca con ese estado y se reingresa en la cola de trabajo para que la misma pueda volver a ser reintentada.&#xA;" DisplayName="Process" sap:VirtualizedContainerService.HintSize="1269,6923" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -181,7 +180,7 @@
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
               </ActivityAction.Argument>
-              <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="418,440" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="2" RetryInterval="5.00:00:00">
+              <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="418,440" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="4" RetryInterval="00:00:05">
                 <ui:RetryScope.ActivityBody>
                   <ActivityAction>
                     <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="376,266" sap2010:WorkflowViewState.IdRef="Sequence_11">
