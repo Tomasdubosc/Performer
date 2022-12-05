@@ -3,7 +3,7 @@
   "description": "Proceso que tiene como objetivo la lectura de notificaciones AFIP y consolida resultados para el usuario final- Robotic Enterprise Framework",
   "main": "Main.xaml",
   "dependencies": {
-    "AFIPLibrary": "[1.0.30]",
+    "AFIPLibrary": "[1.0.31]",
     "UiPath.Excel.Activities": "[2.11.0-preview]",
     "UiPath.GSuite.Activities": "[1.13.2]",
     "UiPath.Mail.Activities": "[1.15.0-preview]",
@@ -14,7 +14,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "21.4.4.0",
-  "projectVersion": "1.0.35",
+  "projectVersion": "1.0.36",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -29,7 +29,8 @@
     "executionType": "Workflow",
     "readyForPiP": false,
     "startsInPiP": false,
-    "mustRestoreAllDependencies": false
+    "mustRestoreAllDependencies": false,
+    "pipType": "ChildSession"
   },
   "designOptions": {
     "projectProfile": "Developement",
