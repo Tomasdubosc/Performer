@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>864,833.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1410.4,833.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -496,9 +496,9 @@
                     <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="SystemException IsNot Nothing" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
                   </Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Lee todas las configuraciones del Config file.&#xA;Realiza una prueba de conexión con Gmail mediante SMTP.&#xA;Chequea la existencia de la carpeta local donde se descargarán temporalmente los archivos adjuntos en las notificaciones AFIP.&#xA;Crea el reporte de ejecución en Google Drive." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="685.6,2645.6" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Lee todas las configuraciones del Config file.&#xA;Realiza una prueba de conexión con Gmail mediante SMTP.&#xA;Chequea la existencia de la carpeta local donde se descargarán temporalmente los archivos adjuntos en las notificaciones AFIP.&#xA;Crea el reporte de ejecución en Google Drive." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="685.6,2667.2" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
-                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="640.8,2256.8" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="640.8,2278.4" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -506,7 +506,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <TryCatch.Try>
-                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="604,2027.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="604,2048.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -521,7 +521,7 @@
                                   <InArgument x:TypeArguments="s:Exception">[Nothing]</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <If sap2010:Annotation.AnnotationText="An uninitialized Config dictionary indicates that it is the first run of the process." Condition="[Config is Nothing]" DisplayName="If first run, read local configuration file" sap:VirtualizedContainerService.HintSize="541.6,1641.6" sap2010:WorkflowViewState.IdRef="If_1">
+                              <If sap2010:Annotation.AnnotationText="An uninitialized Config dictionary indicates that it is the first run of the process." Condition="[Config is Nothing]" DisplayName="If first run, read local configuration file" sap:VirtualizedContainerService.HintSize="541.6,1663.2" sap2010:WorkflowViewState.IdRef="If_1">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -530,7 +530,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <If.Then>
-                                  <Sequence DisplayName="First run" sap:VirtualizedContainerService.HintSize="506.4,1452" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                  <Sequence DisplayName="First run" sap:VirtualizedContainerService.HintSize="506.4,1473.6" sap2010:WorkflowViewState.IdRef="Sequence_17">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -561,18 +561,24 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </ui:InvokeWorkflowFile>
-                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke testGmailConnection" sap:VirtualizedContainerService.HintSize="387.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="testGmailConnection.xaml">
-                                      <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="out_mailUsername">[mailUsername]</OutArgument>
-                                        <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_mailPassword">[mailPassword]</OutArgument>
-                                      </ui:InvokeWorkflowFile.Arguments>
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                    </ui:InvokeWorkflowFile>
+                                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="444,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                      <ui:CommentOut.Body>
+                                        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke testGmailConnection" sap:VirtualizedContainerService.HintSize="444,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="testGmailConnection.xaml">
+                                            <ui:InvokeWorkflowFile.Arguments>
+                                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                                              <OutArgument x:TypeArguments="x:String" x:Key="out_mailUsername">[mailUsername]</OutArgument>
+                                              <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_mailPassword">[mailPassword]</OutArgument>
+                                            </ui:InvokeWorkflowFile.Arguments>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </ui:InvokeWorkflowFile>
+                                        </Sequence>
+                                      </ui:CommentOut.Body>
+                                    </ui:CommentOut>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke - testDownloadLocalFolder" sap:VirtualizedContainerService.HintSize="444,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="testDownloadLocalFolder.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
                                         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
@@ -599,7 +605,7 @@
                                         <InArgument x:TypeArguments="x:String">[Config("executionReportEmailSubject").ToString]</InArgument>
                                       </Assign.Value>
                                     </Assign>
-                                    <Assign DisplayName="Assign - mailBody" sap:VirtualizedContainerService.HintSize="444,60" sap2010:WorkflowViewState.IdRef="Assign_36">
+                                    <Assign DisplayName="Assign - mailBody" sap:VirtualizedContainerService.HintSize="444,81.6" sap2010:WorkflowViewState.IdRef="Assign_36">
                                       <Assign.To>
                                         <OutArgument x:TypeArguments="x:String">[mailBody]</OutArgument>
                                       </Assign.To>
